@@ -11,7 +11,7 @@ export const SeacrhScreen = () => {
 
   const { q = "" } = queryString.parse(location.search);
 
-  const [values, handleInputChange, resetForm] = useForm({
+  const [values, handleInputChange] = useForm({
     searchText: q,
   });
 
@@ -23,7 +23,7 @@ export const SeacrhScreen = () => {
   };
 
   const startWardsFilter = GetMovieByName(searchText);
-console.log(startWardsFilter)
+  console.log(startWardsFilter);
   return (
     <div>
       <h1>Search Screen</h1>
@@ -47,13 +47,9 @@ console.log(startWardsFilter)
         <div className="col-7">
           <h4> Results </h4>
           <hr />
-          {
-              startWardsFilter.map(movie => (
-                  <Cards key={movie.id}
-                  {...movie}
-                  />
-              ))
-          }
+          {startWardsFilter.map((movie) => (
+            <Cards key={movie.id} {...movie} />
+          ))}
         </div>
       </div>
     </div>
